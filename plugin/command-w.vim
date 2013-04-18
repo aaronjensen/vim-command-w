@@ -21,6 +21,23 @@ function! s:CommandW()
   else
     if exists('g:loaded_bufkill')
       BD
+
+      " Close window if it has a buffer open that is open in another window
+      let l:curbuf = bufnr('%')
+      let l:wincount = 0
+      let i = 1
+      let buf = winbufnr(i)
+      while buf != -1
+        if buf == l:curbuf
+          let l:wincount += 1
+        endif
+        let i = i + 1
+        let buf = winbufnr(i)
+      endwhile
+
+      if l:wincount > 1
+        quit
+      endif
     else
       call s:BufkillError()
       q
