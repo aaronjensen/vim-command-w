@@ -6,10 +6,10 @@ if exists('g:loaded_command_w') || &cp
 endif
 let g:loaded_command_w = 1
 
-function s:BufkillError()
-  if !exists('g:command_w_bufkill_error_shown')
-    echoe 'Command-W requires the bufkill plugin to be installed in order to operate correctly'
-    let g:command_w_bufkill_error_shown = 1
+function s:BByeError()
+  if !exists('g:command_w_bbye_error_shown')
+    echoe 'Command-W requires the bbye plugin to be installed in order to operate correctly'
+    let g:command_w_bbye_error_shown = 1
   endif
 endfunction
 
@@ -19,8 +19,8 @@ function! s:CommandW()
   if l:bufcount == 1
     qall
   else
-    if exists('g:loaded_bufkill')
-      BD
+    if exists('g:loaded_bbye')
+      Bdelete
 
       " Close window if it has a buffer open that is open in another window
       let l:curbuf = bufnr('%')
@@ -39,7 +39,7 @@ function! s:CommandW()
         quit
       endif
     else
-      call s:BufkillError()
+      call s:BByeError()
       q
     endif
   endif

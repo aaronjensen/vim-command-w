@@ -10,18 +10,18 @@ Lets be honest, a window in Vim is not equivalent to a tab in say TextMate - the
 
 Here's how I want ⌘W to work:
 
-- Close the current buffer but keep the window open (which [buffkill](http://www.vim.org/scripts/script.php?script_id=1147) already solves with it's `:BD` command).
+- Close the current buffer but keep the window open (which [vim-bbye][1] already solves with it's `:Bd` command).
 - When I press ⌘W on the last **listed**\* buffer, I want MacVim to close.
 
 \*A listed buffer is one that shows up when you type the `:buffers` command. Usually this list only includes editable buffers, so read-only buffers like NERDTree won't show up in this list.
 
 ## Requirements
 * Vim 7+
-* [buffkill](http://www.vim.org/scripts/script.php?script_id=1147) - Allows you to close a buffer without closing a window.
+* [vim-bbye][1] - Allows you to close a buffer without closing a window.
 
 ## Installation
 
-First, make sure you have [buffkill](http://www.vim.org/scripts/script.php?script_id=1147) installed. Command-W will not function correctly without it.
+First, make sure you have [vim-bbye][1] installed. Command-W will not function correctly without it.
 
 ### Manual
 Simply copy the `plugin` directory into your `.vim` directory.
@@ -51,4 +51,6 @@ Add the following to your `.gvimrc`:
 Now you can press ⌘W to close buffers (or to close Vim if you've only got one buffer open).
 
 ### Other
-You can manually use `:CommandW` instead of `:bd` (or `:BD` if you use bufkill).
+You can manually use `:CommandW` instead of `:bd` (or `:Bd` if you use bbye).
+
+[1]: https://github.com/moll/vim-bbye
